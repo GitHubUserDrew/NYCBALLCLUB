@@ -7,7 +7,7 @@ router.get("/", async (req, res)=>{
         const parks = await Park.find({});
         res.send(parks)
     }catch(err){
-
+        return res.status(500).send("internal server error")
     }
 })
 
@@ -23,7 +23,23 @@ router.post('/', async (req, res)=>{
 
        res.send (park)
     }catch(err){
+        return res.status(500).send("internal server error")
+    }
+})
 
+
+
+router.delete("/:id", async (req, res)=>{
+    try{
+        if(!req.user.isAdmin)return res.status(401).send("You are not authorized to do that");
+        const id = req.params.id;
+        const park = await Park.findByIdAndDelete(id);
+        if(park.deletedCount ){
+            res.send({deleted:true})
+        }else  res.send({deleted:false})
+
+    }catch(err){
+        return res.status(500).send("internal server error")
     }
 })
 

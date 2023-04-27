@@ -1,9 +1,12 @@
 import React from 'react'
+import '../css/Home.css'
+import Mapbox from '../component/Mapbox'
 
 function HomePage() {
   return (
-    <div >
-      <h1>Hello world</h1>
+   
+    <div className="Home">
+      <Mapbox/>
     </div>
   )
 }
