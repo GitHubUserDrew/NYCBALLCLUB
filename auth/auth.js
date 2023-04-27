@@ -26,6 +26,7 @@ router.post("/login", async (req, res) => {
 
         const { username, password } = req.body;
         if (!username || !password) res.status(400).send("Username and Password required")
+        console.log(username, password)
         let user = null;
 
         if(username.split("@")[1] )user= await User.findOne({ email:username});

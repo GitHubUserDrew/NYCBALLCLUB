@@ -22,26 +22,26 @@ export default function Register({}) {
   return (
     <div className="login">
       <div className="login-main">
-      <div className="inp-container">
-          <input
-            type="email"
-            name=""
-            id="email"
-            value={email}
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <EmailIcon />
-        </div>
         <div className="inp-container">
-          <input
-            type="text"
-            placeholder="Username"
-            name=""
-            id=""
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+           <input
+             type="email"
+             name=""
+             id="email"
+             value={email}
+             placeholder="Email"
+             onChange={(e) => setEmail(e.target.value)}
+           />
+          <EmailIcon />
+         </div>
+        <div className="inp-container">
+           <input
+             type="text"
+             placeholder="Username"
+             name=""
+             id=""
+             value={username}
+             onChange={(e) => setUsername(e.target.value)}
+           />
           <PersonIcon />
         </div>
         <div className="inp-container">
