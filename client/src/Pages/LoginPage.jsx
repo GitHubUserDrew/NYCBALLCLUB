@@ -5,6 +5,7 @@ import { login } from '../store/authSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import '../css/login.css'
 
 export default function Login({}){
 
@@ -35,7 +36,7 @@ export default function Login({}){
                 <button onClick={  () => dispatch(login({username, password}))}>
                     Login
                 </button>
-                <p>Don't have an account? <Link to="/register">register</Link></p>
+                <p>Don't have an account? <Link to="/register">Register Now</Link></p>
             </div>
         </div>
     )
