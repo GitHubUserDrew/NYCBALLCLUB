@@ -14,12 +14,12 @@ router.get("/", async (req, res)=>{
 router.post('/', async (req, res)=>{
     try{
        if(!req.user.isAdmin)return res.status(401).send("You are not authorized to do that");
-       const {lat , long , name ,image , address } = req.body;
+       const {lat , long , name ,image } = req.body;
 
-       if(!lat || !long ||!name ||!address)return res.status(400).send("Please fill all the fields");
+       if(!lat || !long ||!name )return res.status(400).send("Please fill all the fields");
 
 
-       let park = new park({lat, long, name, image, address});
+       let park = new park({lat, long, name, image});
 
        res.send (park)
     }catch(err){
