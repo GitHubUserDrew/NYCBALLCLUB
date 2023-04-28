@@ -1,6 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
-
+import 'mapbox-gl/dist/mapbox-gl.css';
+import { useSelector } from 'react-redux';
+import pin from "../imgs/pin.png";
+import ReactDOM from 'react-dom';
 mapboxgl.accessToken = 'pk.eyJ1IjoiYW5kcmV3MjUiLCJhIjoiY2xna3lnemF0MDVkbTNyb2J5b3V0MGNobyJ9.hxKhJ59P7GRrj_broRg9EQ';
 
 function Mapbox() {
@@ -8,7 +11,18 @@ function Mapbox() {
     const map = useRef(null);
     const [lng, setLng] = useState(-73.961472);
     const [lat, setLat] = useState(40.785823);
-    const [zoom, setZoom] = useState(12);
+    const [zoom, setZoom] = useState(13);
+    const parks = useSelector(state => state.parks)
+
+    const Marker = ({children}) => {
+      
+      
+        return (
+          <button  className="marker">
+            {children}
+          </button>
+        );
+      };
 
     function setMap (){
         if(map.current){
@@ -20,6 +34,34 @@ function Mapbox() {
         }
     }
 
+     function loadPins(parks){
+        parks.forEach(({name, lat , long}) => {
+            const ref = React.createRef();
+            // Create a new DOM node and save it to the React ref
+            ref.current = document.createElement("div");
+            // Render a Marker Component on our new DOM node
+            ReactDOM.render(
+              <Marker  >
+              <p>{name}</p>
+              <img src={pin} alt="" />
+                
+                
+              </Marker>,
+              ref.current
+            );
+      
+            // Create a Mapbox Marker at our new DOM node
+            new mapboxgl.Marker(ref.current)
+              .setLngLat([Number(long) , Number(lat)])
+              .addTo(map.current);
+      });
+      }
+      
+useEffect(()=>{
+    if(!parks.length) return
+    loadPins(parks)
+  
+  }, [parks])
 
     useEffect(() => {
         if (map.current) return; // initialize map only once
@@ -43,9 +85,7 @@ function Mapbox() {
          
     return (
           <div>
-               <div className="sidebar">
-                      Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-                </div>
+               
                 <div ref={mapContainer} className="map-container" />
             </div>
     )

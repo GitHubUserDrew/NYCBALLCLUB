@@ -1,13 +1,30 @@
-canvas {
+/* canvas {
     position: fixed; 
     top: 0;
     left: 0;
     height:100vh;
     width:100%;
-}
+} */
 
 .map-container {
     position: fixed; 
     top: 0;
     left: 0;
+}
+
+.marker{
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.marker img{
+    display: block;
+    height: 75px;
+    width: 75px;
 }

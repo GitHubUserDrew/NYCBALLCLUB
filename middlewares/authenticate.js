@@ -4,7 +4,7 @@ require('dotenv').config();
 
 module.exports =async  (req, res, next) => {
     let auth = req.cookies.auth;
-
+    console.log('auth');
     if (!auth) {
         return res.status(401).json({ message: 'No token provided' });
     }
