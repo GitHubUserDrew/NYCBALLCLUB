@@ -8,7 +8,9 @@ app.use(express.json({limit:"50mb"}))
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cookieParser())
 
-mongoose.connect(process.env.MONGODB_URI) 
+console.log(process.env.MONGODB_URI)
+ mongoose.connect(process.env.MONGODB_URI)
+
 const authRouter = require("./auth/auth")
 app.use("/auth", authRouter)
 app.use(express.static(__dirname+ '/client/build'));
@@ -19,5 +21,5 @@ app.use("/parks", require('./api/parks'))
 
 
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 5000
 app.listen(PORT, () => { console.log('server started ') })
