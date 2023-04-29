@@ -16,7 +16,8 @@ app.use("/auth", authRouter)
 app.use(express.static(__dirname+ '/client/build'));
 app.use(require('./middlewares/authenticate'));
 app.use("/parks", require('./api/parks'))
-
+app.use("/posts/", require('./api/posts'));
+app.use("/reviews/", require("./api/reviews"))
 
 
 
