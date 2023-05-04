@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux';
 import axios  from 'axios';
 import Post from './Post';
 import Review from './Review';
-
+import AddReviewForm from './AddReviews';
+import AddPostForm from './AddPost';
 
 
 function Park({park}) {
@@ -55,13 +56,16 @@ function Park({park}) {
 {data=="reviews" && reviews.map(review => (
 
 <Review setReviews={fetchReviews} review={review} user={user}></Review>
-))}
 
+))}
+<AddReviewForm parkId={park._id} setReviews={setReviews}/>
 {
   data == "posts" && posts.map(post => (
 <Post  setPosts={fetchPosts} post ={post} user={user}></Post>
   ))
 }
+<AddPostForm parkId={park._id} setPosts={setPosts}/>
+
         </div>
 
 

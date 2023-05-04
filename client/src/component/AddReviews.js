@@ -1,21 +1,32 @@
-import React, {useState} from 'react';
-import axios
-import { useDispatch } from 'react-redux';
+import React, {useState, useRef} from 'react';
+import axios from 'axios';
+import imgupload from "../utils/imgupload"
 //review is title and text and rating and image and postedat and parkid and user id
-const AddReviewForm = () => {
-    const [title, setTitle] = useState('');
-    const [text, setText] = useState('');
-    const [rating, setRating] = useState(0);
-    const dispatch = useDispatch();
+const AddReviewForm = ({ parkId, setReviews }) => {
+  const [title, setTitle] = useState('');
+  const [text, setText] = useState('');
+  const [rating, setRating] = useState(null);
+  const [img , setImg] = useState("")
+  const ref = useRef();
 
-    const handlesubmit = async(e) => {
-        e.preventDefault();
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      if(!rating || !title||!text) return;
+      let obj ={rating , title , text, parkId};
 
-    }
+      if(img)obj.image=img;
+      try {
+        const response = await axios.post(`/reviews/${parkId}`,obj);
+        setReviews(reviews => [...reviews, response.data]);
+        setTitle('');
+        setText('');
+        setRating(null);
+        setImg('')
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-    const ratingfunction() {
-        setRating(rating)
-    }
     return (
 
        <div>
@@ -29,14 +40,25 @@ const AddReviewForm = () => {
                 onChange={(e) => setTitle(e.target.value)}
                 />
             </div>
+            <div className="img-upload" onClick={() => ref.current.click()}>
+              <p>click to upload img</p>
+              <input type="file" name="" ref={ref} id="" onChange={(e)=> imgupload(e, setImg)}  style={{display:"none"}}/>
+            </div>
+            <div>
+              <input type="number" name=""min="1" max='5' value={rating} onChange= {(e)=> setRating(e.target.value)}  id="" />
+            </div>
            <div>
               <label htmlFor="text">text:</label>
-               <input
+               <textarea
                  id="text"
                   value={text}
                 onChange={(e) => setText(e.target.value)}
-               />
+               ></textarea>
            </div>
+           <div>
+          <label htmlFor="rating">Rating:</label>
+       
+          </div>
              <button type="submit">Post A Review</button>
            </form>
         </div>

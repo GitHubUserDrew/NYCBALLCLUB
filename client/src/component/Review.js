@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import  axios  from 'axios';
+
 function Review({review, user, setReviews}) {
    async function del() {
         await axios.delete("/reviews/"+ review._id);
@@ -14,7 +15,7 @@ function Review({review, user, setReviews}) {
         <p>{review.postedAt}</p>
         
     </div>
-    <h3 className="rating">{review.rating} stars</h3>
+    <p className="rating">{[1,1,1,1,1].slice(0,review.rating).map(()=> <span>&#9733;</span>)}</p>
    <h3>{review.title}</h3>
    
    <div className="review-img">
@@ -23,8 +24,6 @@ function Review({review, user, setReviews}) {
    <p>{review.text}</p>
    {(review.userId == (user.id) ) && <button onClick={del}>delete</button>}
 
-
-   
 </div>
   )
 }

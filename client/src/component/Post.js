@@ -1,6 +1,6 @@
 import React from 'react'
 import  axios  from 'axios';
-
+import AddPostForm from './AddPost';
 function Post({post, user, setPosts}) {
  async function del()
 {
@@ -24,7 +24,7 @@ function Post({post, user, setPosts}) {
        {post.edited && <p className="edited">edited</p>}
 
        {(post.userId ==(user.id) ) && <button onClick={del}>delete</button>}
-       
+       <AddPostForm/>
     </div>
   )
 }

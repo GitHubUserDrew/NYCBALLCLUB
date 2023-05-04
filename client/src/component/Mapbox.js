@@ -11,7 +11,7 @@ function Mapbox({setPark}) {
     const map = useRef(null);
     const [lng, setLng] = useState(-73.961472);
     const [lat, setLat] = useState(40.785823);
-    const [zoom, setZoom] = useState(13);
+    const [zoom, setZoom] = useState(12);
     const parks = useSelector(state => state.parks)
 
     const Marker = ({children, onClick}) => {
@@ -83,7 +83,7 @@ useEffect(()=>{
         setZoom(map.current.getZoom().toFixed(2));
         });
     });
-         
+          
     return (
           <div>
                
