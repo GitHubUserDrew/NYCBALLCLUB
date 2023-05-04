@@ -18,7 +18,7 @@ router.post("/register", async (req, res) => {
         await user.save();
         let token = jwt.sign({ username, email }, process.env.JWT_SECRET);
         res.cookie("auth", token);
-        return res.status(201).send({ username, email });
+        return res.status(201).send({ username, email, id:user._id });
 })
 
 
@@ -37,7 +37,7 @@ router.post("/login", async (req, res) => {
             if (!result) return res.status(401).send("incorrect password")
             let token = jwt.sign({ username: user.username, email:user.email }, process.env.JWT_SECRET);
             res.cookie("auth", token);
-            return res.status(201).send({ username: user.username, email:user.email });
+            return res.status(201).send({ username: user.username, email:user.email, id:user._id });
         });
 })
 
@@ -56,7 +56,7 @@ router.get('/me', async (req, res) => {
             return res.status(401).send("invalid token");
         }
         let user = await User.findOne({ username: verified.username });
-        return res.status(200).send({ username: user.username, email: user.email});
+        return res.status(200).send({ username: user.username, email: user.email, id:user._id});
     } catch (err) {
         return res.status(500).send('some error occured');
     }

@@ -28,3 +28,23 @@
     height: 75px;
     width: 75px;
 }
+
+
+.overlay{
+    position: fixed;
+    background: transparent;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    z-index: 20;
+}
+
+.img-upload{
+    height: 200px;
+    width:300px;
+    border: 5px solid black;
+}

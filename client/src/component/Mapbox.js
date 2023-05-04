@@ -6,19 +6,19 @@ import pin from "../imgs/pin.png";
 import ReactDOM from 'react-dom';
 mapboxgl.accessToken = 'pk.eyJ1IjoiYW5kcmV3MjUiLCJhIjoiY2xna3lnemF0MDVkbTNyb2J5b3V0MGNobyJ9.hxKhJ59P7GRrj_broRg9EQ';
 
-function Mapbox() {
+function Mapbox({setPark}) {
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(-73.961472);
     const [lat, setLat] = useState(40.785823);
-    const [zoom, setZoom] = useState(13);
+    const [zoom, setZoom] = useState(12);
     const parks = useSelector(state => state.parks)
 
-    const Marker = ({children}) => {
+    const Marker = ({children, onClick}) => {
       
       
         return (
-          <button  className="marker">
+          <button  className="marker" onClick={onClick}>
             {children}
           </button>
         );
@@ -35,13 +35,14 @@ function Mapbox() {
     }
 
      function loadPins(parks){
-        parks.forEach(({name, lat , long}) => {
+        parks.forEach((park) => {
+            const {name, lat , long} = park;
             const ref = React.createRef();
             // Create a new DOM node and save it to the React ref
             ref.current = document.createElement("div");
             // Render a Marker Component on our new DOM node
             ReactDOM.render(
-              <Marker  >
+              <Marker onClick={()=>setPark(park)} >
               <p>{name}</p>
               <img src={pin} alt="" />
                 
@@ -82,7 +83,7 @@ useEffect(()=>{
         setZoom(map.current.getZoom().toFixed(2));
         });
     });
-         
+          
     return (
           <div>
                
