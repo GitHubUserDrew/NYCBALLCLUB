@@ -1,12 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-function Modal({children, close}) {
+function Modal({ children, close }) {
   return (
-    <div className ="overlay">
-        <button onClick={close}> close</button>
+    <div className="overlay">
+      <button id="close-btn" onClick={close}>Close</button>
       {children}
     </div>
-  )
+  );
 }
 
-export default Modal
+export default Modal;
+
