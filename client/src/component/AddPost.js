@@ -7,6 +7,7 @@ const AddPostForm = ({ parkId, setPosts }) => {
   const [text, setText] = useState('');
   const [img , setImg] = useState("")
   const ref = useRef();
+
     const handleSubmit = async (e) => {
       e.preventDefault();
       if(!title||!text) return;
@@ -25,12 +26,12 @@ const AddPostForm = ({ parkId, setPosts }) => {
     };
     return (
 
-       <div>
-          <form onSubmit={handleSubmit}>
-            <div>
+       <div className="add-form-main-div">
+          <form className="add-main-form" onSubmit={handleSubmit}>
+            <div className= "add-title">
                 <label htmlFor="title">Title:</label>
                 <input
-                  type="text"
+                type="text"
                 id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -49,7 +50,7 @@ const AddPostForm = ({ parkId, setPosts }) => {
                 onChange={(e) => setText(e.target.value)}
                 ></textarea>
            </div>
-             <button type="submit">Add Post</button>
+             <button id="submit-btn" type="submit">Add Post</button>
            </form>
         </div>
     )

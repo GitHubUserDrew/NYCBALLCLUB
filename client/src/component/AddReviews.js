@@ -29,9 +29,9 @@ const AddReviewForm = ({ parkId, setReviews }) => {
 
     return (
 
-       <div>
-          <form onSubmit={handleSubmit}>
-            <div>
+       <div className="add-form-main-div">
+          <form className="add-main-form" onSubmit={handleSubmit}>
+            <div className= "add-title">
                 <label htmlFor="title">Title:</label>
                 <input
                   type="text"
@@ -42,12 +42,13 @@ const AddReviewForm = ({ parkId, setReviews }) => {
             </div>
             <div className="img-upload" onClick={() => ref.current.click()}>
               <p>click to upload img</p>
-              <input type="file" name="" ref={ref} id="" onChange={(e)=> imgupload(e, setImg)}  style={{display:"none"}}/>
+              <input type="file" name="" ref={ref} id="img-input" onChange={(e)=> imgupload(e, setImg)}  style={{display:"none"}}/>
             </div>
-            <div>
-              <input type="number" name=""min="1" max='5' value={rating} onChange= {(e)=> setRating(e.target.value)}  id="" />
+            <div className="add-rating">
+              <label htmlFor="rating">Rating:</label>
+              <input type="number" name="" min="1" max='5' value={rating} onChange= {(e)=> setRating(e.target.value)}  id="" />
             </div>
-           <div>
+           <div className="add-text">
               <label htmlFor="text">text:</label>
                <textarea
                  id="text"
@@ -55,11 +56,7 @@ const AddReviewForm = ({ parkId, setReviews }) => {
                 onChange={(e) => setText(e.target.value)}
                ></textarea>
            </div>
-           <div>
-          <label htmlFor="rating">Rating:</label>
-       
-          </div>
-             <button type="submit">Post A Review</button>
+             <button id="submit-btn" type="submit">Post A Review</button>
            </form>
         </div>
     )
