@@ -51,9 +51,6 @@ export const authSlice = createSlice({
             return action.payload;
         })
     }
-
-
-
 })
 
 export default authSlice.reducer;

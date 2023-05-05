@@ -12,8 +12,7 @@ function Post({post, user, setPosts}) {
         <div className="post-info">
            {/* get the user info about the uder who posted and link to their profile */}
             <h3>username</h3>
-            <p>{post.postedAt}</p>
-            
+            <p>{post.postedAt}</p>   
         </div>
        <h3>{post.title}</h3>
        <div className="post-img">
@@ -24,7 +23,6 @@ function Post({post, user, setPosts}) {
        {post.edited && <p className="edited">edited</p>}
 
        {(post.userId ==(user.id) ) && <button onClick={del}>delete</button>}
-       <AddPostForm/>
     </div>
   )
 }
