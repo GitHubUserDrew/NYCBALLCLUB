@@ -13,7 +13,21 @@ function Park({ park }) {
   const [reviews, setReviews] = useState([]);
   const [posts, setPosts] = useState([]);
   const [data, setData] = useState('posts');
+  const [showAddReviewForm, setShowAddReviewForm] = useState(false);
+  const [showAddPostForm, setShowAddPostForm] = useState(false);
 
+  function handleAddReviewClick(){
+    setShowAddReviewForm(true);
+  }
+  function handleAddPostClick(){
+    setShowAddPostForm(true);	
+  }
+  function handleCloseReviewClick(){
+    setShowAddReviewForm(false);
+  }
+  function handleClosePostClick(){
+    setShowAddPostForm(false);	
+  }
   async function fetchReviews() {
     let data = await axios.get('/reviews/park/' + park._id);
     console.log(data.data);
@@ -51,12 +65,25 @@ function Park({ park }) {
           <div className="main">
             {data == 'reviews' &&
               reviews.map((review) => (
-                <Review setReviews={fetchReviews} review={review} user={user}></Review>
-              ))}
-            <AddReviewForm parkId={park._id} setReviews={setReviews} />
+                <Review setReviews={fetchReviews} review={review} user={user}></Review>))}
+              {showAddReviewForm ? (
+                <> 
+                <AddReviewForm parkId={park._id} setReviews={setReviews}/>
+                <button onClick={handleCloseReviewClick}>Close</button>
+                </>
+              ) : ( 
+                <button onClick={handleAddReviewClick}> Make a Review</button> 
+              )}
             {data == 'posts' &&
               posts.map((post) => <Post setPosts={fetchPosts} post={post} user={user}></Post>)}
-            <AddPostForm parkId={park._id} setPosts={setPosts} />
+            {showAddPostForm ? (
+              <> 
+              <AddPostForm parkId={park._id} setPosts={setPosts} />
+              <button onClick={handleClosePostClick}>Close</button>
+              </> 
+            ) : (
+              <button onClick={handleAddPostClick}>Make a Post</button> 
+            )}
           </div>
         </div>
       </div>
