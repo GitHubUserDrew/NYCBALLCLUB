@@ -14,6 +14,7 @@ export const login = createAsyncThunk('login', async ({username, password})=>{
 
 export const register = createAsyncThunk('register', async ({username, email, password})=>{
     let user =await  axios.post("/auth/register",{username, email,password});
+    console.log(user.data)
     return user.data;
 
 }
@@ -29,7 +30,8 @@ export const getUser = createAsyncThunk('getUser',async()=>{
 
 
 export const logout = createAsyncThunk('logout', async()=>{
-    return await axios.get('/auth/logout')
+   await axios.get('/auth/logout');
+   return null;
 })
 
 export const authSlice = createSlice({
@@ -45,6 +47,7 @@ export const authSlice = createSlice({
             return action.payload;
         })
         builder.addCase(logout.fulfilled, (state, action)=>{
+            window.location.reload();
             return null;
         })
         builder.addCase(getUser.fulfilled, (state, action)=>{

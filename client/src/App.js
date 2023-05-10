@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getUser } from './store/authSlice';
@@ -8,18 +8,23 @@ import './css/App.css';
 import Login from './Pages/LoginPage';
 import Register from './Pages/RegisterPage';
 import Home from './Pages/HomePage';
+import {useNavigate} from 'react-router-dom';
 
 function App() {
   const user = useSelector(state => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getUser());
   }, []);
+  useEffect(() => {
+    user && navigate('/');
+  }, [user]);
 
   return (
     <div className="App">
-      <Router>
+    
         <Routes>
           {!user && <Route path="/" element={<Login />} />}
           {!user && <Route path="/register" element={<Register />} />}
@@ -29,7 +34,7 @@ function App() {
             </>
           )}
         </Routes>
-      </Router>
+    
     </div>
   );
 }

@@ -1,13 +1,6 @@
 const mongoose = require("mongoose")
 require("dotenv").config()
 
-
-
-
-
-
-
-
 const schema = new mongoose.Schema({
     lat :{
         type:Number,
@@ -27,7 +20,6 @@ const schema = new mongoose.Schema({
         default:process.env.DEFAULT_PARK_IMG
     }
 })
-
 
 
 module.exports = mongoose.model("Park", schema)

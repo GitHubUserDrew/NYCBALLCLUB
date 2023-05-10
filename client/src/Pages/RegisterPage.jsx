@@ -16,9 +16,7 @@ export default function Register({}) {
   const navigate = useNavigate();
   const user = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    user && navigate('/aaaaa');
-  }, [user]);
+  
 
   return (
     <div className="login">
