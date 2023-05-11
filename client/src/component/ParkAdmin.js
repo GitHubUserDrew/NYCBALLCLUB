@@ -6,7 +6,7 @@ import Park from './Park';
 import axios from 'axios';
 import {getParks} from '../store/parkSlice'
 import {useDispatch} from "react-redux"
-import imgupload from "../utils/imgupload"
+import imgUpload from "../utils/imgupload"
 import '../css/ParkAdmin.css'
 
 function AddParkForm() {
