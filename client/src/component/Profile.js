@@ -9,7 +9,7 @@ import {useSelector} from 'react-redux';
 import '../css/Profile.css'
 import {getUser} from "../store/authSlice"
 import {useDispatch} from "react-redux"
-import imgUpload from "../utils/imgUpload";
+import imgupload from "../utils/imgUpload";
 
 
 
