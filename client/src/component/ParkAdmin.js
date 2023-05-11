@@ -1,11 +1,12 @@
-//comp to have form to add park , and delete park functonality
 
-import React from 'react';
+
+import React , {useRef}from 'react';
 import { useState } from 'react';
 import Park from './Park';
 import axios from 'axios';
 import {getParks} from '../store/parkSlice'
 import {useDispatch} from "react-redux"
+import imgUpload from "../utils/imgUpload"
 import '../css/ParkAdmin.css'
 
 function AddParkForm() {
@@ -13,6 +14,8 @@ function AddParkForm() {
     const [long, setLong] = useState('');
     const [name, setName] = useState('');
     const dispatch = useDispatch()
+    const ref = useRef();
+    const [img , setImg] = useState('');
 
     const handleAddParkForm = async (e) => {
         e.preventDefault();
@@ -32,6 +35,11 @@ function AddParkForm() {
   return( 
     <div className="add-park-div">
           <form className="add-park-form" onSubmit={handleAddParkForm}>
+
+            <div className="park-img-upload" style ={{background:"url("+img+")" || "white"}} onClick ={()=> ref.current.click()}>
+              <input type="file" ref={ref} onChange ={(e) => imgUpload(e , setImg) } style ={{display :"none"}} />
+              {!img && <p>Add an Image </p>}
+            </div>
         <div className="add-lat">
           <label htmlFor="latitude">Latitude: </label>
           <input
