@@ -1,4 +1,3 @@
-const {MongoClient} = require("mongodb")
 const express = require("express");
 const mongoose = require("mongoose")
 const app = express();
@@ -12,25 +11,6 @@ app.use(cookieParser())
 
  mongoose.connect(process.env.MONGODB_URI)
 
-
-// async function connectToCluster(uri) {
-//     let mongoClient;
- 
-//     try {
-//         mongoClient = new MongoClient(uri);
-//         console.log('Connecting to MongoDB Atlas cluster...');
-//         await mongoClient.connect();
-//         console.log('Successfully connected to MongoDB Atlas!');
- 
-//         return mongoClient;
-//     } catch (error) {
-//         console.error('Connection to MongoDB Atlas failed!', error);
-//         process.exit();
-//     }
-//  }
-
-
-//  connectToCluster(process.env.MONGODB_URI);
 
 const authRouter = require("./auth/auth")
 app.use("/auth", authRouter)
