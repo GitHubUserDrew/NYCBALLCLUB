@@ -6,23 +6,31 @@ const Park = require("../models/Park")
 
 
 router.get("/park/:parkId",async(req , res)=>{
+    try {
     let id = req.params.parkId;
     let posts = await Post.find({parkId:id})
     res.send(posts)
-    
+        }catch(err){
+        return res.status(500).send("internal server error")
+    }
 
   
 } )
 
 
 router.get("/user/:userId",async(req , res)=>{
+    try {
     let id = req.params.userId;
     let posts = await Post.find({userId:id})
     res.send(posts)
+}catch(err){
+    return res.status(500).send("internal server error")
+}
 })
 
 
 router.post("/:parkId", async(req , res)=>{
+    try{
     let parkId = req.params.parkId;
     let userId = req.user._id;
 
@@ -36,9 +44,13 @@ router.post("/:parkId", async(req , res)=>{
     await post.save();
 
     res.send(post)
+    }catch(err){
+    return res.status(500).send("internal server error")
+    }
 })
 
 router.put("/:postId", async (req, res)=>{
+    try{
     let id = req.params.postId;
     
     let post = await Post.findOne({_id:id});
@@ -57,10 +69,14 @@ router.put("/:postId", async (req, res)=>{
      let editedPost = await Post.findOneAndUpdate({_id:id}, update, {new: true} );
 
      res.send(editedPost)
+    }catch(err){
+        return res.status(500).send("internal server error")
+    }
 })
 
 
 router.delete("/:postId", async(req, res)=>{
+    try {
     let id = req.params.postId;
     console.log(id)
     let post = await Post.findOne({_id:id});
@@ -71,6 +87,9 @@ router.delete("/:postId", async(req, res)=>{
     if(deleted?.deletedCount ){
         res.send({deleted:true})
     }else  res.send({deleted:false})
+}catch(err){
+    return res.status(500).send("internal server error")
+}
 })
 
 

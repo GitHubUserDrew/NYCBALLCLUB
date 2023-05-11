@@ -23,6 +23,7 @@ router.get("/user/:userId",async(req , res)=>{
 
 
 router.post("/:parkId", async (req, res)=>{
+    try {
     let userId = req.user._id;
     let parkId = req.params.parkId;
 
@@ -36,11 +37,14 @@ router.post("/:parkId", async (req, res)=>{
     let review = new Review({rating , title , image , text, userId, parkId});
     await review.save();
     res.send(review);
+}catch(err){
+    return res.status(500).send("internal server error")
+}
 })
 
 
 router.delete("/:reviewId", async(req, res)=>{
-
+try {
     let id = req.params.reviewId;
     let review = await Review.findOne({_id:id});
     console.log(review);
@@ -51,6 +55,9 @@ router.delete("/:reviewId", async(req, res)=>{
     if(delreview?.deletedCount ){
         res.send({deleted:true})
     }else  res.send({deleted:false})
+}catch(err){
+    return res.status(500).send("internal server error")
+}
 })
 
 

@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 router.post("/register", async (req, res) => {
+    try {
     console.log(await User.find({}))
         const { username, email ,  password } = req.body;
         if (!username  ||!email || !password) res.status(400).send("Username, Email and Password are required")
@@ -20,11 +21,14 @@ router.post("/register", async (req, res) => {
         let token = jwt.sign({ username, email }, process.env.JWT_SECRET);
         res.cookie("auth", token);
         return res.status(201).send(user);
+    }catch(err){
+        return res.status(500).send("internal server error")
+    }
 })
 
 
 router.post("/login", async (req, res) => {
-
+        try {
         const { username, password } = req.body;
         if (!username || !password) res.status(400).send("Username and Password required")
         console.log(username, password)
@@ -40,12 +44,19 @@ router.post("/login", async (req, res) => {
             res.cookie("auth", token);
             return res.status(201).send(user);
         });
+    }catch(err){
+        return res.status(500).send("internal server error")
+    }
 })
 
 
 router.get('/logout', (req, res) => {
+    try{
     res.clearCookie('auth');
     res.send('success');
+}catch(err){
+    return res.status(500).send("internal server error")
+}
 })
 
 router.get('/me', async (req, res) => {

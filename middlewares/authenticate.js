@@ -3,6 +3,7 @@ const User = require("../models/User")
 require('dotenv').config();
 
 module.exports =async  (req, res, next) => {
+    try {
     let auth = req.cookies.auth;
     console.log('auth');
     if (!auth) {
@@ -15,4 +16,7 @@ module.exports =async  (req, res, next) => {
     }
         req.user = await User.findOne({username : verified.username});
     return next();
+}catch(err){
+    return res.status(500).send("internal server error")
 }
+};
