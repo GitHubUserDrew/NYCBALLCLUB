@@ -1,0 +1,85 @@
+/* review */
+
+.Review {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    background-color: #fff;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 20px;
+    width: 80%;
+    height: 50%;
+  }
+  
+  .review-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .review-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .review-info h3 {
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .review-info p {
+    margin: 0;
+    font-size: 14px;
+    color:black;
+  }
+
+  .rating {
+    font-size: 24px;
+    color: #f8d64e;
+    margin-bottom: 10px;
+  }
+  
+  .rating span {
+    margin-right: 5px;
+  }
+  
+  .review-img img {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .review-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+  }
+  
+  .Review p {
+    font-size: 14px;
+    line-height: 1.5;
+    align-self: center;
+  }
+  
+  .Review button {
+    background-color: #006BB6;
+    border: 1px solid black;
+    color: #F58426;
+    font-weight: bold;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .Review button:hover {
+    color: #006BB6;
+    background-color: #F58426;
+  }

@@ -1,3 +1,4 @@
+const {MongoClient} = require("mongodb")
 const express = require("express");
 const mongoose = require("mongoose")
 const app = express();
@@ -8,8 +9,28 @@ app.use(express.json({limit:"50mb"}))
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cookieParser())
 
-console.log(process.env.MONGODB_URI)
+
  mongoose.connect(process.env.MONGODB_URI)
+
+
+// async function connectToCluster(uri) {
+//     let mongoClient;
+ 
+//     try {
+//         mongoClient = new MongoClient(uri);
+//         console.log('Connecting to MongoDB Atlas cluster...');
+//         await mongoClient.connect();
+//         console.log('Successfully connected to MongoDB Atlas!');
+ 
+//         return mongoClient;
+//     } catch (error) {
+//         console.error('Connection to MongoDB Atlas failed!', error);
+//         process.exit();
+//     }
+//  }
+
+
+//  connectToCluster(process.env.MONGODB_URI);
 
 const authRouter = require("./auth/auth")
 app.use("/auth", authRouter)
@@ -18,6 +39,7 @@ app.use(require('./middlewares/authenticate'));
 app.use("/parks", require('./api/parks'))
 app.use("/posts/", require('./api/posts'));
 app.use("/reviews/", require("./api/reviews"))
+app.use("/users/", require("./api/users"))
 
 
 

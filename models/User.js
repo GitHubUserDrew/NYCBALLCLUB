@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require("dotenv").config();
 
 const userSchema = new mongoose.Schema({
     username :{
@@ -17,6 +18,20 @@ const userSchema = new mongoose.Schema({
         required:true,
         default:false,
         type:Boolean
+    },
+    pfp:{
+        required:true,
+        type:String,
+        default:process.env.PFP
+
+    },
+    name:{
+        required:true,
+        type:String,
+        default:"User"
+     
+
+        
     }
 })
 

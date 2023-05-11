@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import '../css/Park.css';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
@@ -13,37 +13,29 @@ function Park({ park }) {
   const [reviews, setReviews] = useState([]);
   const [posts, setPosts] = useState([]);
   const [data, setData] = useState('posts');
-  const [showAddReviewForm, setShowAddReviewForm] = useState(false);
-  const [showAddPostForm, setShowAddPostForm] = useState(false);
-
-  function handleAddReviewClick(){
-    setShowAddReviewForm(true);
-  }
-  function handleAddPostClick(){
-    setShowAddPostForm(true);	
-  }
-  function handleCloseReviewClick(){
-    setShowAddReviewForm(false);
-  }
-  function handleClosePostClick(){
-    setShowAddPostForm(false);	
-  }
-  async function fetchReviews() {
+ 
+const fetchReviews = useCallback(async ()=> {
     let data = await axios.get('/reviews/park/' + park._id);
-    console.log(data.data);
+    console.log(data);
     setReviews(data.data);
-  }
+  })
 
-  async function fetchPosts() {
+  const fetchPosts = useCallback(async() => {
     let data = await axios.get('/posts/park/' + park._id);
-    console.log(data.data);
+    console.log(data);
     setPosts(data.data);
-  }
+  })
 
   useEffect(() => {
+    console.log("fetching")
     fetchPosts();
     fetchReviews();
   }, []);
+
+  function avgRating(){
+    if(!reviews.length) return;
+    return (reviews?.reduce((a,review) =>  a+Number(review.rating), 0  )/reviews.length)
+  }
 
     return (
       <div className="Park">
@@ -52,7 +44,7 @@ function Park({ park }) {
             <img src={park.image} alt="" />
           </div>
           <h1 className="park-name">{name}</h1>
-          <h2 className="park-rating">4 stars</h2>
+          <h2 className="park-rating">{avgRating()} </h2>
           <p className="park-address">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, autem!
           </p>
@@ -64,26 +56,18 @@ function Park({ park }) {
           </div>
           <div className="main">
             {data == 'reviews' &&
-              reviews.map((review) => (
+              reviews?.map((review) => (
                 <Review setReviews={fetchReviews} review={review} user={user}></Review>))}
-              {showAddReviewForm ? (
-                <> 
+            {data == 'reviews' && (
                 <AddReviewForm parkId={park._id} setReviews={setReviews}/>
-                <button onClick={handleCloseReviewClick}>Close</button>
-                </>
-              ) : ( 
-                <button onClick={handleAddReviewClick}> Make a Review</button> 
-              )}
+              ) }
             {data == 'posts' &&
-              posts.map((post) => <Post setPosts={fetchPosts} post={post} user={user}></Post>)}
-            {showAddPostForm ? (
-              <> 
+              posts?.map((post) => <Post setPosts={fetchPosts} post={post} user={user}></Post>)}
+           {data == "posts" &&(
               <AddPostForm parkId={park._id} setPosts={setPosts} />
-              <button onClick={handleClosePostClick}>Close</button>
-              </> 
-            ) : (
-              <button onClick={handleAddPostClick}>Make a Post</button> 
-            )}
+            ) }
+
+          
           </div>
         </div>
       </div>

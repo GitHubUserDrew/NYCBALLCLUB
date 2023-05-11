@@ -34,6 +34,7 @@
     top: 0;
     left: 0;
     z-index: 20;
+    color:white;
 }
 button#close-btn {
     position: absolute;
@@ -45,10 +46,84 @@ button#close-btn {
     background: none;
     border: none;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button#close-btn:hover {
+ color:red
 }
 
 .img-upload{
     height: 200px;
     width:300px;
     border: 5px solid black;
+}
+
+.logout{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #0007;
+    color: white;
+    padding: 10px;
+    z-index: 20;
+    cursor: pointer;
+    transition: all 0.3s ease
+}
+
+.logout:hover {
+    background-color: red;
+}
+
+.profile{
+    display: flex;
+    position: fixed;
+    z-index: 20;
+    top: 15px;
+    right: 120px;
+    align-items: center;
+    gap: 10px;
+    background-color: #0007;
+    color:white;
+    border-radius: 10px;
+    height: 50px;
+    width: 100px;
+}
+
+.profile img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+
+}
+.profile p{
+    color: white;
+    font-size: 20px;
+}
+
+
+.adm-btn{
+    position: fixed;
+    
+    background: #0007;
+    padding: 10px;
+    top: 20px;
+    left: 260px ;
+    
+}
+
+.admin {
+    position: fixed;
+    top: 20px;
+    z-index: 20;
+    margin-left:10px; 
+    font-weight: bold;
+    color: #006BB6;
+    background-color: #F58426;
+    transition: all 0.3s ease
+}
+
+.admin:hover {
+    color: #F58426;
+    background-color: #006BB6;
 }

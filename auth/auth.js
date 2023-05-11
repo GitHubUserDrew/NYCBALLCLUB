@@ -12,13 +12,14 @@ router.post("/register", async (req, res) => {
         const hash = await bcrypt.hash(password, 10);
         let foundUser = await User.findOne({ username });
         if (foundUser) return res.status(409).send("Username already taken");
-        foundUser = await User.findOne({ email });
-        if (foundUser) return res.status(409).send("Email already taken");
-        const user = new User({ username, email, password: hash });
+        let anotherfoundUser = await User.findOne({ email });
+        if (anotherfoundUser) return res.status(409).send("Email already taken");
+        let user = new User({ username, email, password: hash });
         await user.save();
+        
         let token = jwt.sign({ username, email }, process.env.JWT_SECRET);
         res.cookie("auth", token);
-        return res.status(201).send({ username, email, id:user._id });
+        return res.status(201).send(user);
 })
 
 
@@ -37,7 +38,7 @@ router.post("/login", async (req, res) => {
             if (!result) return res.status(401).send("incorrect password")
             let token = jwt.sign({ username: user.username, email:user.email }, process.env.JWT_SECRET);
             res.cookie("auth", token);
-            return res.status(201).send({ username: user.username, email:user.email, id:user._id });
+            return res.status(201).send(user);
         });
 })
 
@@ -56,7 +57,7 @@ router.get('/me', async (req, res) => {
             return res.status(401).send("invalid token");
         }
         let user = await User.findOne({ username: verified.username });
-        return res.status(200).send({ username: user.username, email: user.email, id:user._id});
+        return res.status(200).send(user);
     } catch (err) {
         return res.status(500).send('some error occured');
     }

@@ -12,7 +12,7 @@ router.get("/", async (req, res)=>{
 })
 
 router.post('/', async (req, res)=>{
-    // try{
+    try{
         console.log('request');
        if(!req.user.isAdmin)return res.status(401).send("You are not authorized to do that");
        const {lat , long , name ,image } = req.body;
@@ -24,9 +24,9 @@ router.post('/', async (req, res)=>{
        await park.save();
 
        res.send (park)
-    //  }catch(err){
-    //     return res.status(500).send("internal server error")
-    // }
+     }catch(err){
+        return res.status(500).send("internal server error")
+    }
 })
 
 
