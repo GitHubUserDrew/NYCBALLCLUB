@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {useEffect, useState} from 'react'
-import '../css/Review.css'
+
 function Review({ review, user, setReviews }) {
 
   const oldDate = new Date(review.postedAt);

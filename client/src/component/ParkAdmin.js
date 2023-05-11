@@ -36,10 +36,7 @@ function AddParkForm() {
     <div className="add-park-div">
           <form className="add-park-form" onSubmit={handleAddParkForm}>
 
-            <div className="park-img-upload" style ={{background:"url("+img+")" || "white"}} onClick ={()=> ref.current.click()}>
-              <input type="file" ref={ref} onChange ={(e) => imgUpload(e , setImg) } style ={{display :"none"}} />
-              {!img && <p>Add an Image </p>}
-            </div>
+           
         <div className="add-lat">
           <label htmlFor="latitude">Latitude: </label>
           <input

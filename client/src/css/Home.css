@@ -12,6 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: white !important;
 }
 
 
@@ -60,15 +61,18 @@ button#close-btn:hover {
 }
 
 .logout{
-    position: fixed;
-    top: 20px;
-    right: 20px;
     background: #0007;
-    color: white;
-    padding: 10px;
-    z-index: 20;
+    color: #fff;
     cursor: pointer;
-    transition: all 0.3s ease
+    padding: 10px;
+    position: fixed;
+    right: 20px;
+    height: 50px;
+    border-radius: 0px;
+    font-size: 20px;
+    top: 20px;
+    transition: all .3s ease;
+    z-index: 20;
 }
 
 .logout:hover {
@@ -77,17 +81,19 @@ button#close-btn:hover {
 
 .profile{
     display: flex;
-    position: fixed;
-    z-index: 20;
-    top: 15px;
-    right: 120px;
     align-items: center;
-    gap: 10px;
     background-color: #0007;
-    color:white;
-    border-radius: 10px;
+    /* border-radius: 10px; */
+    color: #fff;
+    display: flex;
+    gap: 10px;
     height: 50px;
+    position: fixed;
+    right: 120px;
+    padding: 0 10px;
+    top: 20px;
     width: 100px;
+    z-index: 20;
 }
 
 .profile img{

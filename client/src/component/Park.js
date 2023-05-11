@@ -55,17 +55,19 @@ const fetchReviews = useCallback(async ()=> {
             <h2 onClick={() => setData('posts')}>Posts</h2>
           </div>
           <div className="main">
+          {data == 'reviews' && (
+                <AddReviewForm parkId={park._id} setReviews={setReviews}/>
+              ) }
             {data == 'reviews' &&
               reviews?.map((review) => (
                 <Review setReviews={fetchReviews} review={review} user={user}></Review>))}
-            {data == 'reviews' && (
-                <AddReviewForm parkId={park._id} setReviews={setReviews}/>
-              ) }
-            {data == 'posts' &&
-              posts?.map((post) => <Post setPosts={fetchPosts} post={post} user={user}></Post>)}
-           {data == "posts" &&(
+        
+        {data == "posts" &&(
               <AddPostForm parkId={park._id} setPosts={setPosts} />
             ) }
+            {data == 'posts' &&
+              posts?.map((post) => <Post setPosts={fetchPosts} post={post} user={user}></Post>)}
+        
 
           
           </div>

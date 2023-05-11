@@ -1,26 +1,32 @@
 .Park{
-    width: 60vw;
-    height: 60vh;
+    display:flex;
     background: #0007;
     box-shadow: 4px 5px 10px #000;
-    display: flex;
+    color: #fff;
+    height: 60vh;
     justify-content: space-around;
     margin: 20px;
     padding: 20px;
-    color: white;
+    width: 60vw;
+    min-height: 600px;
+    min-width: 1000px;
 }
 
 .info{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
+    min-width: 33%;
+    width: 33%;
+    padding: 20px;
+    gap: 20px;
+    justify-content: center;
 }
 
 .park-img{
-    width:200px;
-    height:200px;
+    height: 300px;
+    margin: 0;
     margin-bottom: 20px;
+    width: 300px;
 }
 
 .park-img img {
@@ -30,22 +36,21 @@
 }
 
 .park-name {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-align: center;
+    margin: 0;
+    text-align: center;
+    font-size: 44px;
 }
 
 .park-rating {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 2 rem;
+    margin: 0 ; 
     text-align: center;
 }
 
 .park-address {
     font-size: 1rem;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 0;
 }
 
 .side {
@@ -53,14 +58,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex:1; 
 }
 
 .park-heading {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    width:100%;
-    margin-bottom:20px
+    min-height: 60px;
+    display: flex;
+    width: 100%;
 }
 
 .park-heading h2 {
@@ -75,12 +80,12 @@
 }
 
 .main {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
+    height: 100%;
     justify-content: center;
+    overflow: auto;
+    width: 100%;
 }
 
 .marker:hover{
@@ -106,33 +111,35 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 80%;
-    margin-top: 2rem;
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
+    background-color: black;
     box-shadow: 2px 2px 10px #333;
+    margin: 20px 0;
+    padding: 20px;
+    color: white !important;
+    display: flex;
+    width: 80%;
 }
 
 .add-title {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
     margin-bottom: 1rem;
 }
 
 .add-title label {
-    font-weight: bold;
+    color: #fff;
+    font-weight: 700;
     margin-bottom: 0.5rem;
-    color: black;
-    align-self: center;
-
 }
   
 .add-title input {
-    padding: 0.5rem;
     border-radius: 5px;
     box-shadow: 2px 2px 5px #333;
     cursor: pointer;
+    padding: 0.5rem;
 }
 
 .img-upload {
@@ -142,48 +149,52 @@
     justify-content: center;
     margin-bottom: 1rem;
     cursor: pointer;
+    color: black !important;
+    width: 98%;
+    border-color: white;
 }
   
   
 .add-rating {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
     margin-bottom: 1rem;
 }
   
 .add-rating label {
-    margin-right: 0.5rem;
-    color: black;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
 .add-rating input {
-    width: 3rem;
-    height: 2rem;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-}
-
-.add-text {
-    display: flex;
-    margin-bottom: 1rem;
-    align-items: center;
-}
-  
-.add-text label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    color:black
-}
-  
-.add-text textarea {
-    padding: 0.5rem;
     border-radius: 5px;
     box-shadow: 2px 2px 5px #333;
     cursor: pointer;
+    padding: 0.5rem;
+}
+
+.add-text {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+  
+.add-text label {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white !important; 
+}
+  
+.add-text textarea {
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #333;
+    cursor: pointer;
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
 }
 
 button#submit-btn {
@@ -195,6 +206,7 @@ button#submit-btn {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    width: 100%;
   }
   
   button#submit-btn:hover {

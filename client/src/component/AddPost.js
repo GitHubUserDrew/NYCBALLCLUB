@@ -29,7 +29,7 @@ const AddPostForm = ({ parkId, setPosts }) => {
   };
 
     return (
-      <div className="add-form-main-div">
+
         <form className="add-main-form" onSubmit={handleSubmit}>
           <div className="add-title">
             <label htmlFor="title">Title:</label>
@@ -40,7 +40,7 @@ const AddPostForm = ({ parkId, setPosts }) => {
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
-          <div className="img-upload" onClick={() => ref.current.click()}>
+          <div className="img-upload" style={{background:`url(${img})` || "white"}}onClick={() => ref.current.click()}>
             <p>click to upload img</p>
             <input
               type="file"
@@ -62,7 +62,7 @@ const AddPostForm = ({ parkId, setPosts }) => {
           </div>
           <button id="submit-btn" type="submit">Add Post</button>
         </form>
-      </div>
+
     );
     
 }

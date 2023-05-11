@@ -30,7 +30,7 @@ const AddReviewForm = ({ parkId, setReviews }) => {
   };
 
     return (
-      <div className="add-form-main-div">
+
         <form className="add-main-form" onSubmit={handleSubmit}>
           <div className="add-title">
             <label htmlFor="title">Title:</label>
@@ -41,7 +41,7 @@ const AddReviewForm = ({ parkId, setReviews }) => {
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
-          <div className="img-upload" onClick={() => ref.current.click()}>
+          <div className="img-upload" style={{backgound:`url(${img})`|| "white"}} onClick={() => ref.current.click()}>
             <p>click to upload img</p>
             <input
               type="file"
@@ -74,7 +74,7 @@ const AddReviewForm = ({ parkId, setReviews }) => {
           </div>
           <button id="submit-btn" type="submit">Post A Review</button>
         </form>
-      </div>
+
     )
 };
 

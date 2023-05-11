@@ -1,59 +1,59 @@
-.Post {
-  display: flex;
-  background-color: #fff;
-  border: 5px solid #007bff;
+.Post, .Review {
+  background-color: #000;
+  /* border: 5px solid #007bff; */
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,.1);
-  color: #000;
+  box-shadow: 2px 2px 8px #222, -2px -2px 8px #222;
+  color: white !important;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
   padding: 20px;
   width: 80%;
-  flex-direction: column;
   }
-  
-  .Post h3 {
+
+  .Post h3, .review h3 {
     font-size: 24px;
     margin-bottom: 10px;
   }
   
-  .post-info {
-    display: flex;
+  .post-info, .review-info  {
     align-items: center;
+    display: flex;
     margin-bottom: 10px;
+    gap: 25px;
   }
   
-  .post-info img {
+  .post-info img, .review-info img {
     border-radius: 50%;
-    width:50px;
-    height:50px;
+    height: 60px;
     margin-right: 8px;
+    width: 60px;
   }
 
-  .post-info h3 {
-    margin: 0;
-    font-size: 18px;
+  .post-info h3 , .review-info h3{
+    font-size: 24px;
+    margin-bottom: 10px
   }
   
-  .post-info p {
+  .post-info p , .review-info p{
     margin: 0;
     font-size: 14px;
     color: #666;
   }
   
-  .post-img {
+  .post-img , .review-img{
     margin-bottom: 10px;
   }
   
-  .post-img img {
+  .post-img img , .review-img img{
     max-width: 100%;
     height:auto;
 
   }
   
-  .Post p {
-    font-weight: bold;
+  .Post p , .Review p{
+    font-weight: 700;
     line-height: 1.5;
-    color: black;
   }
   
   .edited {
@@ -77,3 +77,5 @@
     color: #006BB6;
     background-color: #F58426
   }
+
+ 
