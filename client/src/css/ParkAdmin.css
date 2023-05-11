@@ -1,7 +1,7 @@
 .add-park-div {
     margin: 20px auto;
     width: 50%;
-    border: 1px solid black;
+    border: 5px solid #f58426;
     border-radius: 5px;
     padding: 20px;
     background-color: white;
@@ -61,4 +61,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.Manage {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+}
+
+/* .manage-parks {
+
+} */
+
+
+.manage-park {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.manage-park button {
+    display: flex;
+    align-self: center;
 }

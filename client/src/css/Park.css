@@ -124,6 +124,8 @@
     font-weight: bold;
     margin-bottom: 0.5rem;
     color: black;
+    align-self: center;
+
 }
   
 .add-title input {
@@ -168,6 +170,7 @@
 .add-text {
     display: flex;
     margin-bottom: 1rem;
+    align-items: center;
 }
   
 .add-text label {

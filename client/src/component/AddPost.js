@@ -51,7 +51,7 @@ const AddPostForm = ({ parkId, setPosts }) => {
               style={{display:"none"}}
             />
           </div>
-          <div>
+          <div className="add-text">
             <label htmlFor="text">Text:</label>
             <textarea
               type="text"
