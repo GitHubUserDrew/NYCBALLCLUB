@@ -23,15 +23,11 @@ const userSchema = new mongoose.Schema({
         required:true,
         type:String,
         default:process.env.PFP
-
     },
     name:{
         required:true,
         type:String,
-        default:"User"
-     
-
-        
+        default:"User"  
     }
 })
 

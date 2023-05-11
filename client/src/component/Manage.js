@@ -23,12 +23,9 @@ function Manage() {
                 await axios.delete("/parks/"+ park._id);
               window.location.reload();
                 }}>Delete</button>
-
             </div>)
       }
      </div>
-
-
       <AddParkForm/>
     </div>
   )
